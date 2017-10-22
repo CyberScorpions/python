@@ -1,8 +1,16 @@
 # Setting up a Python ENV
 
+Notes to setup a python environment.
+
+I opted to use Anaconda to install python on the system.
+
+However I am using `virtualenvwrapper` from within conda to create specific build environments.
+
 ## Anaconda
 
-Anaconda: <http://conda.pydata.org/docs/installation.html>
+[Installation Instructions](http://conda.pydata.org/docs/installation.html)
+
+### Docs
 
 <http://conda.pydata.org/docs/>
 
@@ -13,43 +21,34 @@ Anaconda: <http://conda.pydata.org/docs/installation.html>
 
 ### Setup and environment
 
+Once conda is installed. Commands to create and environemnt
+
+    conda search "^python$"
+
+    # python 2.7
     conda create -n py27 python=2.7 anaconda
     source activate py27
     source deactivate py27
 
-    conda search "^python$"
+    # python 3.6
     conda create -n py36 python=3.6 anaconda
     source activate py36
     source deactivate py36
 
 
-    conda install -n yourenvname [package]
-
-
 ### Update
 
 ##### conda
+
 <https://conda.io/docs/user-guide/tasks/manage-conda.html>
 
-    conda update --prefix /Users/sam/anaconda anaconda
-    conda upgrade --prefix /Users/sam/anaconda anaconda
+    conda update --prefix $HOME/anaconda anaconda
+    conda upgrade --prefix $HOME/anaconda anaconda
 
 ##### python
 <https://conda.io/docs/user-guide/tasks/manage-python.html>
 
     conda update python
-
-### dbus?
-
-If this is your first install of dbus, automatically load on login with:
-    mkdir -p ~/Library/LaunchAgents
-    cp /Users/sam/anaconda/org.freedesktop.dbus-session.plist ~/Library/LaunchAgents/
-    launchctl load -w ~/Library/LaunchAgents/org.freedesktop.dbus-session.plist
-
-If this is an upgrade and you already have the org.freedesktop.dbus-session.plist loaded:
-    launchctl unload -w ~/Library/LaunchAgents/org.freedesktop.dbus-session.plist
-    cp /Users/sam/anaconda/org.freedesktop.dbus-session.plist ~/Library/LaunchAgents/
-    launchctl load -w ~/Library/LaunchAgents/org.freedesktop.dbus-session.plist
 
 
 ## virtualenv
@@ -62,24 +61,23 @@ If this is an upgrade and you already have the org.freedesktop.dbus-session.plis
 
 ~~virtualenv virtualenv/py3.6.3 -p python3.6.3~~
 
-**use virtualenvwrapper instead**
+**use virtualenvwrapper instead (below)**
 
 
 ## virtualenvwrapper
 
-<https://virtualenvwrapper.readthedocs.io/en/latest/install.html>
+[virtualenvwrapper docs](https://virtualenvwrapper.readthedocs.io/en/latest/install.html)
 
+    source activate py36
     pip install virtualenvwrapper
 
 Add to ~/.bashrc
 
     export WORKON_HOME=$HOME/.virtualenvs
     export PROJECT_HOME=$HOME/virtualenvwrapper_project_home
-    source /Users/sam/anaconda/bin/virtualenvwrapper.sh
+    source $HOME/anaconda/bin/virtualenvwrapper.sh
 
 Continue
-
-    source activate py36
 
     mkvirtualenv py3.6.3 -p $(which python)
     workon py3.6.3

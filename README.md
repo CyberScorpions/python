@@ -50,20 +50,6 @@ Once conda is installed. Commands to create and environemnt
 
     conda update python
 
-
-## virtualenv
-
-~~<https://virtualenv.pypa.io/en/stable/installation/>~~
-
-~~source activate py36~~
-
-~~pip install virtualenv~~
-
-~~virtualenv virtualenv/py3.6.3 -p python3.6.3~~
-
-**use virtualenvwrapper instead (below)**
-
-
 ## virtualenvwrapper
 
 [virtualenvwrapper docs](https://virtualenvwrapper.readthedocs.io/en/latest/install.html)
